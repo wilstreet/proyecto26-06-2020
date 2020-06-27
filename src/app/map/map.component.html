@@ -1,0 +1,39 @@
+
+<header >
+  <h5>map</h5>
+</header>
+
+<agm-map [latitude]="4.662387"
+ [longitude]="-74.069037"
+ [zoom]="18"
+ [disableDefaultUI]="false"
+ [zoomControl]="true"
+ (mapClick)="mapClicked=($event)">
+
+
+
+ <agm-marker
+ *ngFor="let m of markers; let i = index"
+     (markerClick)="clickedMarker(m.label, i)"
+     [latitude]="m.lat"
+     [longitude]="m.lng"
+     [markerDraggable]="m.draggable"
+     (dragEnd)="markerDragEnd(m, $event)"
+     [iconUrl]="m.iconUrl">
+     <agm-info-window>
+      <div>
+        <div id="head">
+          {{m.label}}
+        </div>
+        <div id="content">
+         Estamos aquí
+        </div>
+      </div>
+      <button>Galeria</button>
+      </agm-info-window>
+
+</agm-marker>
+
+
+
+</agm-map>
